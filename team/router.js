@@ -16,4 +16,11 @@ router.post('/team', (req, res, next) => {
     .catch(error => next(error))
 })
 
+router.get('/team/:id', (req, res, next) => {
+  const teamID = req.params.id
+  Team.findByPk(teamID)
+    .then(team => res.send(team))
+    .catch(error => next(error))
+})
+
 module.exports = router
